@@ -1,0 +1,3 @@
+objs/*.o
+objs/*.bin
+bootable.bin
