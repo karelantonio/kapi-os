@@ -23,7 +23,7 @@ OBJSDIR=objs
 # Files
 #SED_SCRIPT="{ s/^$(SRCDIR)/$(OBJSDIR)/g ; s/\.c$$/\.o/g ; s/\.cpp$$/\.o/g ; s/\.s$$/\.o/g }"
 #OBJS=$(shell find src/ -type f | grep -P "\.(c|cpp|s)$$" | grep -v mbr.s | sed $(SED_SCRIPT) )
-FILES=load-kernel kernel vga alloc alloc_arena
+FILES=load-kernel kernel vga alloc alloc_arena ui ui_canvas
 OBJS=$(foreach file,$(FILES),$(OBJSDIR)/$(file).o)
 
 # Color logs

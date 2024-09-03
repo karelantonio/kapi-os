@@ -3,7 +3,7 @@
 
 struct ArenaMetadata {
     long head, end;
-};
+} GLOBALMETA;
 
 void arena_setup(void* meta) {
     // Not required
@@ -28,7 +28,12 @@ void arena_destroy(void* meta) {
 }
 
 void arena_allocator(long startaddr, long length) {
+
+    GLOBALMETA.head = startaddr;
+    GLOBALMETA.end = startaddr + length;
+
     struct Allocator* allc = global_allocator();
+    allc->metap = &GLOBALMETA;
     allc->setup = arena_setup;
     allc->alloc = arena_alloc;
     allc->free = arena_free;
