@@ -2,13 +2,16 @@
 #define ALLOC_H
 
 // The global allocator VTable
-static struct {
+struct Allocator {
     void *metap;
     void (*setup)(void*metap);
     void* (*alloc)(void*metap, long size);
     void (*free)(void*metap, void* ptr);
     void (*destroy)(void*metap);
-} Allocator;
+};
+
+// Get the global allocator
+struct Allocator* global_allocator();
 
 // Setup the memory allocator
 void allocator_setup();

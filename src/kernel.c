@@ -1,7 +1,11 @@
 #include<kernel.h>
 #include<vga.h>
+#include<alloc.h>
+#include<alloc_arena.h>
 
 void kernel(){
+    arena_allocator(0x100000, 0x100000);
+    allocator_setup();
 
     struct VgaDevice vga = vga_new();
     for(int r = 0; r<25; r++){
@@ -10,4 +14,5 @@ void kernel(){
         }
     }
 
+    allocator_destroy();
 }

@@ -1,17 +1,23 @@
 #include<alloc.h>
 
+struct Allocator GLOBAL;
+
+struct Allocator* global_allocator(){
+    return &GLOBAL;
+}
+
 void allocator_setup(){
-    Allocator.setup(Allocator.metap);
+    GLOBAL.setup(GLOBAL.metap);
 }
 
 void* alloc(long size){
-    return Allocator.alloc(Allocator.metap, size);
+    return GLOBAL.alloc(GLOBAL.metap, size);
 }
 
 void free(void* ptr) {
-    Allocator.free(Allocator.metap, ptr);
+    GLOBAL.free(GLOBAL.metap, ptr);
 }
 
 void allocator_destroy(){
-    Allocator.destroy(Allocator.metap);
+    GLOBAL.destroy(GLOBAL.metap);
 }
