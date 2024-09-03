@@ -4,23 +4,14 @@
 // The VGA Driver
 struct VgaDevice{
     char *address;
-    long ptr;
+    int rows;
+    int cols;
 };
 
 // Create a new VGA Device
 struct VgaDevice vga_new();
 
 // Put a character into the VGA Device
-void vga_putc(struct VgaDevice*, char);
-
-// Put a whole string into the VGA Device
-void vga_puts(struct VgaDevice*, const char *str);
-
-// Put a new line into the VGA Device
-void vga_newline(struct VgaDevice*);
-
-// Write an hex number
-void vga_hex32(struct VgaDevice*, unsigned long);
-
+void vga_putc(struct VgaDevice*, int r, int c, char chr, char style);
 
 #endif
